@@ -93,6 +93,7 @@ class Event(object):
 			if self.interval > 0:
 				self.loop = True
 				self.thread = threading.Timer(interval, self.create, args=(args))
+				self.thread.name = self.name
 			else:
 				self.loop = False
 				self.thread = threading.Thread(target=self.create, name=self.name, args=(args))
